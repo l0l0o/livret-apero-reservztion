@@ -1,12 +1,20 @@
 import Image from "next/image";
 import Navbar from "@/features/navbar/Navbar";
+import NFZCounter from "@/features/NFZCounter/NFZCounter";
 
 export default function Home() {
   return (
-    <div style={{ background: styles.colorMainDark, height: styles.height }}>
+    <div
+      style={{
+        background: styles.colorMainDark,
+        height: styles.height,
+        padding: styles.padding,
+      }}
+    >
       <Navbar />
       <h1 className="text-3xl font-bold underline">Mon livret A(pero)</h1>
-      {/* <NFZCounter />
+      <NFZCounter />
+      {/* 
       <InviteButton />
 
       <div>
@@ -24,4 +32,5 @@ const styles = {
   colorMainDark:
     "linear-gradient(46deg, #806FE1 -36.01%, #000 58.26%), #000613",
   height: "100vh",
+  padding: "16px",
 };

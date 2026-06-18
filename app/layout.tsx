@@ -1,15 +1,44 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const dmSans = localFont({
+  variable: "--font-dm-sans",
+  display: "swap",
+  src: [
+    {
+      path: "../public/font/static/DMSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/font/static/DMSans-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/font/static/DMSans-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/font/static/DMSans-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
+  src: [
+    {
+      path: "../public/font/static/DMSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -25,9 +54,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }

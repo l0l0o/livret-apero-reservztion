@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "@/features/navbar/Navbar";
 import NFZCounter from "@/features/NFZCounter/NFZCounter";
+import InviteButton from "@/features/InviteButton/InviteButton";
 
 export default function Home() {
   return (
@@ -15,8 +16,8 @@ export default function Home() {
       <div style={wrapperStyles}>
         <h1 style={titleStyles}>Mon livret A(pero)</h1>
         <NFZCounter NFZvalue={280} maxValue={500} />
+        <InviteButton />
         {/* 
-      <InviteButton />
 
       <div>
         <h2 className="text-2xl font-bold underline">Découvrez vos offres</h2>

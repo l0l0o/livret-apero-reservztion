@@ -38,7 +38,7 @@ function Slider({ value, className }: SliderProps) {
         </SliderPrimitive.Track>
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
-          className="relative z-20 block size-8 shrink-0 rounded-full border border-ring bg-[#9E90FF] select-none"
+          className="relative z-20 block size-8 shrink-0 overflow-hidden rounded-full border border-ring bg-[url(/image/NightFlouz.png)] bg-cover bg-center bg-no-repeat select-none"
         />
       </SliderPrimitive.Control>
     </SliderPrimitive.Root>

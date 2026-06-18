@@ -69,7 +69,7 @@ const textStyles = {
 const textNumberStyles = {
   color: "#878787",
   fontWeight: "600",
-  fontSize: "12px",
+  fontSize: "14px",
 };
 
 export default NFZCounter;

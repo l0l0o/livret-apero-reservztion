@@ -13,7 +13,7 @@ export default function Home() {
     >
       <Navbar />
       <h1 className="text-3xl font-bold underline">Mon livret A(pero)</h1>
-      <NFZCounter />
+      <NFZCounter NFZvalue={280} maxValue={500} />
       {/* 
       <InviteButton />
 

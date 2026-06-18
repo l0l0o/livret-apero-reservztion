@@ -1,4 +1,22 @@
-const NFZCounter = () => {
+"use client";
+
+import { Slider } from "@/components/ui/slider";
+import { useState } from "react";
+
+type NFZCounterProps = {
+  NFZvalue?: number;
+  maxValue?: number;
+};
+
+const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
+  const [nfzValue, setNfzValue] = useState<number>(NFZvalue);
+
+  // Valeur dérivée : recalculée à chaque rendu, donc toujours à jour avec nfzValue.
+  const percentageValue = Math.min(
+    100,
+    Math.max(0, (nfzValue / maxValue) * 100),
+  );
+
   return (
     <div style={containerStyles}>
       <h3
@@ -7,7 +25,7 @@ const NFZCounter = () => {
           fontWeight: textStyles.mainTextWeight,
         }}
       >
-        280{" "}
+        {nfzValue}{" "}
         <span
           style={{
             color: textStyles.subTextColor,
@@ -18,11 +36,12 @@ const NFZCounter = () => {
           NFZ
         </span>
       </h3>
-      <div className="h-[23px] flex items-center justify-center">
-        <div style={emptyGaugeStyles}>
-          <div style={gaugeStyles} />
-        </div>
-        <div style={gaugeBallStyles} />
+      <div className="h-[40px] flex items-center justify-center">
+        <Slider value={percentageValue} />
+      </div>
+      <div className="flex justify-between">
+        <span style={textNumberStyles}>0</span>
+        <span style={textNumberStyles}>500</span>
       </div>
     </div>
   );
@@ -47,26 +66,10 @@ const textStyles = {
   subTextSize: "14px",
 };
 
-const emptyGaugeStyles = {
-  width: "100%",
-  height: "7px",
-  backgroundColor: "#5B5B5B",
-  borderRadius: "99px",
+const textNumberStyles = {
+  color: "#878787",
+  fontWeight: "600",
+  fontSize: "12px",
 };
 
-const gaugeStyles = {
-  width: "70%",
-  height: "100%",
-  backgroundColor: "#806FE1",
-  borderRadius: "99px",
-};
-
-const gaugeBallStyles = {
-  position: "absolute",
-  left: "70%",
-  backgroundColor: "#806FE1",
-  width: "23px",
-  height: "23px",
-  borderRadius: "100%",
-};
 export default NFZCounter;

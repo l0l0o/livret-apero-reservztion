@@ -14,3 +14,8 @@ export async function POST() {
   memberNumber = Math.min(memberNumber + 1, MAX_MEMBERS);
   return Response.json({ memberNumber });
 }
+
+export async function DELETE() {
+  memberNumber = 0;
+  return Response.json({ memberNumber });
+}

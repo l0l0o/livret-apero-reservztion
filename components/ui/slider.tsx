@@ -5,10 +5,12 @@ import { cn } from "@/lib/utils";
 type SliderProps = {
   /** Remplissage de la jauge, de 0 à 100. */
   value: number;
+  /** Jauge pleine : anime le remplissage en gradient arc-en-ciel. */
+  rainbow?: boolean;
   className?: string;
 };
 
-function Slider({ value, className }: SliderProps) {
+function Slider({ value, rainbow = false, className }: SliderProps) {
   return (
     <SliderPrimitive.Root
       className={cn(
@@ -36,12 +38,18 @@ function Slider({ value, className }: SliderProps) {
           </div>
           <SliderPrimitive.Indicator
             data-slot="slider-range"
-            className="relative z-10 bg-[linear-gradient(90deg,#4E3ABD_0%,#9E90FF_100%)] select-none data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
+            className={cn(
+              // Transition sur width/height pour un remplissage fluide à chaque tick.
+              "relative z-10 select-none transition-[width,height] duration-500 ease-out data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+              rainbow
+                ? "gauge-rainbow"
+                : "bg-[linear-gradient(90deg,#4E3ABD_0%,#9E90FF_100%)]",
+            )}
           />
         </SliderPrimitive.Track>
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
-          className="relative z-20 block size-8 shrink-0 overflow-hidden rounded-full border border-ring bg-[url(/image/NightFlouz.png)] bg-cover bg-center bg-no-repeat select-none"
+          className="relative z-20 block size-8 shrink-0 overflow-hidden rounded-full border border-ring bg-[url(/image/NightFlouz.png)] bg-cover bg-center bg-no-repeat transition-[inset-inline-start,bottom] duration-500 ease-out select-none"
         />
       </SliderPrimitive.Control>
     </SliderPrimitive.Root>

@@ -1,7 +1,6 @@
 import Navbar from '@/features/navbar/Navbar';
-import OffersList from '@/features/offers-list/OffersList';
 
-import MembersRewards from '@/features/MembersRewards/MembersRewards';
+import HomeContent from '@/features/HomeContent/HomeContent';
 
 export default function Home() {
   // Solde NFZ de l'utilisateur : source unique de vérité partagée avec les offres.
@@ -19,9 +18,7 @@ export default function Home() {
       <Navbar />
       <div style={wrapperStyles}>
         <h1 style={titleStyles}>Mon livret A(pero)</h1>
-        <MembersRewards baseNfz={userNfz} maxValue={500} />
-
-        <OffersList userNfz={userNfz} />
+        <HomeContent baseNfz={userNfz} maxValue={500} />
       </div>
     </div>
   );

@@ -1,16 +1,17 @@
 // Contrat partagé : paliers de récompense liés au nombre de membres invités.
 // `memberNumber` est la variable serveur (poll-ée). Les bonus sont CUMULÉS :
 // chaque palier atteint ajoute son bonus au total.
-//   5 membres  -> +20 NFZ
-//   10 membres -> +30 NFZ (total +50)
-//   20 membres -> +40 NFZ (total +90)
+//   5 membres  -> +20 NFZ  (total +20)
+//   10 membres -> +30 NFZ  (total +50)
+//   20 membres -> +270 NFZ (total +320)
+// Avec un solde de base de 180 NFZ, le total à 20 membres atteint exactement 500.
 
 export type Tier = { threshold: number; bonus: number };
 
 export const MEMBER_TIERS: Tier[] = [
   { threshold: 5, bonus: 20 },
   { threshold: 10, bonus: 30 },
-  { threshold: 20, bonus: 40 },
+  { threshold: 20, bonus: 270 },
 ];
 
 // Plafond du compteur : dernier palier.

@@ -39,6 +39,17 @@ const InviteScreen = () => {
     }
   }
 
+  async function handleReset() {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/members', { method: 'DELETE' });
+      const data: { memberNumber: number } = await res.json();
+      setMemberNumber(data.memberNumber);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   const reachedMax = memberNumber >= MAX_MEMBERS;
 
   return (
@@ -53,6 +64,14 @@ const InviteScreen = () => {
         className="size-24 rounded-full text-5xl font-bold"
       >
         +
+      </Button>
+
+      <Button
+        variant="outline"
+        onClick={handleReset}
+        disabled={memberNumber === 0 || loading}
+      >
+        Reset
       </Button>
 
       <Link href="/" style={backLinkStyles}>

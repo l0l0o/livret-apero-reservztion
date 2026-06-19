@@ -1,45 +1,20 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
-import { getNfzBonus, getNextTier } from '@/lib/memberTiers';
+import { getNextTier } from '@/lib/memberTiers';
 import NFZCounter from '@/features/NFZCounter/NFZCounter';
 import InviteButton from '@/features/InviteButton/InviteButton';
 
 type MembersRewardsProps = {
-  baseNfz: number;
+  /** Nombre de membres invités (variable serveur poll-ée par le parent). */
+  memberNumber: number;
+  /** Solde NFZ effectif déjà calculé (base + bonus). */
+  nfz: number;
   maxValue: number;
 };
 
-const MembersRewards = ({ baseNfz, maxValue }: MembersRewardsProps) => {
-  const [memberNumber, setMemberNumber] = useState<number>(0);
-
-  useEffect(() => {
-    let active = true;
-
-    const fetchMembers = async () => {
-      try {
-        const res = await fetch('/api/members');
-        if (!res.ok) return;
-        const data: { memberNumber: number } = await res.json();
-        if (active) setMemberNumber(data.memberNumber);
-      } catch {
-        // Ignore les erreurs réseau, on réessaiera au prochain tick.
-      }
-    };
-
-    fetchMembers();
-    const intervalId = setInterval(fetchMembers, 2000);
-
-    return () => {
-      active = false;
-      clearInterval(intervalId);
-    };
-  }, []);
-
-  const bonus = getNfzBonus(memberNumber);
-  const nfz = baseNfz + bonus;
+const MembersRewards = ({ memberNumber, nfz, maxValue }: MembersRewardsProps) => {
   const nextTier = getNextTier(memberNumber);
 
   return (

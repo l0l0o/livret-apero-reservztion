@@ -10,6 +10,8 @@ type NFZCounterProps = {
 const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
   // Valeur dérivée directement de la prop : reflète toujours le bonus au polling.
   const percentageValue = Math.min(100, Math.max(0, (NFZvalue / maxValue) * 100));
+  // Jauge pleine : on bascule sur l'animation arc-en-ciel.
+  const isMax = NFZvalue >= maxValue;
 
   return (
     <div style={containerStyles}>
@@ -31,7 +33,7 @@ const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
         </span>
       </h3>
       <div className="h-[40px] flex items-center">
-        <Slider value={percentageValue} className="w-full" />
+        <Slider value={percentageValue} rainbow={isMax} className="w-full" />
       </div>
       <div className="flex justify-between">
         <span style={textNumberStyles}>0</span>

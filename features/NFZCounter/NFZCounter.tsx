@@ -1,7 +1,6 @@
 'use client';
 
 import { Slider } from '@/components/ui/slider';
-import { useState } from 'react';
 
 type NFZCounterProps = {
   NFZvalue?: number;
@@ -9,10 +8,8 @@ type NFZCounterProps = {
 };
 
 const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
-  const [nfzValue, setNfzValue] = useState<number>(NFZvalue);
-
-  // Valeur dérivée : recalculée à chaque rendu, donc toujours à jour avec nfzValue.
-  const percentageValue = Math.min(100, Math.max(0, (nfzValue / maxValue) * 100));
+  // Valeur dérivée directement de la prop : reflète toujours le bonus au polling.
+  const percentageValue = Math.min(100, Math.max(0, (NFZvalue / maxValue) * 100));
 
   return (
     <div style={containerStyles}>
@@ -22,7 +19,7 @@ const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
           fontWeight: textStyles.mainTextWeight,
         }}
       >
-        {nfzValue}{' '}
+        {NFZvalue}{' '}
         <span
           style={{
             color: textStyles.subTextColor,

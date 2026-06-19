@@ -7,7 +7,7 @@ import InviteButton from '@/features/InviteButton/InviteButton';
 
 export default function Home() {
   // Solde NFZ de l'utilisateur : source unique de vérité partagée avec les offres.
-  const userNfz = 280;
+  const userNfz = 180;
 
   return (
     <div

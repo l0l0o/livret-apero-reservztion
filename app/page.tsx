@@ -1,9 +1,12 @@
-import Image from "next/image";
-import Navbar from "@/features/navbar/Navbar";
+import Navbar from '@/features/navbar/Navbar';
+import OffersList from '@/features/offers-list/OffersList';
 
 export default function Home() {
   return (
-    <div style={{ background: styles.colorMainDark, height: styles.height }}>
+    <div
+      className="flex h-screen flex-col overflow-hidden"
+      style={{ background: styles.colorMainDark }}
+    >
       <Navbar />
       <h1 className="text-3xl font-bold underline">Mon livret A(pero)</h1>
       {/* <NFZCounter />
@@ -14,14 +17,13 @@ export default function Home() {
         <Image src="/images/offres.png" alt="Filtres" className="w-4 h-4" />
       </div>
 
-      <OffersFilter />
-      <OffersList /> */}
+      <OffersFilter /> */}
+      <OffersList />
     </div>
   );
 }
 
 const styles = {
-  colorMainDark:
-    "linear-gradient(46deg, #806FE1 -36.01%, #000 58.26%), #000613",
-  height: "100vh",
+  colorMainDark: 'linear-gradient(46deg, #806FE1 -36.01%, #000 58.26%), #000613',
+  height: '100vh',
 };

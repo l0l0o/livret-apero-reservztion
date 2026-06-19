@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const Navbar = () => {
   return (
@@ -14,13 +14,13 @@ const Navbar = () => {
 };
 
 const navbarStyles = {
-  backgroundColor: "transparent",
-  color: "#FFFFFF",
-  padding: "8px 16px",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  borderRadius: "8px",
+  backgroundColor: 'transparent',
+  color: '#FFFFFF',
+  padding: '8px 0px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  borderRadius: '8px',
 };
 
 export default Navbar;

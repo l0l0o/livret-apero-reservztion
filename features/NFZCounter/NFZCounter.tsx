@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Slider } from "@/components/ui/slider";
-import { useState } from "react";
+import { Slider } from '@/components/ui/slider';
+import { useState } from 'react';
 
 type NFZCounterProps = {
   NFZvalue?: number;
@@ -12,10 +12,7 @@ const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
   const [nfzValue, setNfzValue] = useState<number>(NFZvalue);
 
   // Valeur dérivée : recalculée à chaque rendu, donc toujours à jour avec nfzValue.
-  const percentageValue = Math.min(
-    100,
-    Math.max(0, (nfzValue / maxValue) * 100),
-  );
+  const percentageValue = Math.min(100, Math.max(0, (nfzValue / maxValue) * 100));
 
   return (
     <div style={containerStyles}>
@@ -25,7 +22,7 @@ const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
           fontWeight: textStyles.mainTextWeight,
         }}
       >
-        {nfzValue}{" "}
+        {nfzValue}{' '}
         <span
           style={{
             color: textStyles.subTextColor,
@@ -36,8 +33,8 @@ const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
           NFZ
         </span>
       </h3>
-      <div className="h-[40px] flex items-center justify-center">
-        <Slider value={percentageValue} />
+      <div className="h-[40px] flex items-center">
+        <Slider value={percentageValue} className="w-full" />
       </div>
       <div className="flex justify-between">
         <span style={textNumberStyles}>0</span>
@@ -47,29 +44,29 @@ const NFZCounter = ({ NFZvalue = 100, maxValue = 500 }: NFZCounterProps) => {
   );
 };
 
-const containerStyles = {
-  padding: "16px",
-  borderRadius: "8px",
-  backgroundColor: "#1B1B1B",
-  border: "2px solid #5B5B5B",
-  display: "flex",
-  flexDirection: "column",
-  gap: "12px",
+const containerStyles: React.CSSProperties = {
+  padding: '16px',
+  borderRadius: '8px',
+  backgroundColor: '#1B1B1B',
+  border: '2px solid #5B5B5B',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '12px',
 };
 
 const textStyles = {
-  mainTextColor: "#FFFFFF",
-  mainTextWeight: "bold",
-  mainTextSize: "20px",
-  subTextColor: "#AAAAAA",
-  subTextWeight: "normal",
-  subTextSize: "14px",
+  mainTextColor: '#FFFFFF',
+  mainTextWeight: 'bold',
+  mainTextSize: '20px',
+  subTextColor: '#AAAAAA',
+  subTextWeight: 'normal',
+  subTextSize: '14px',
 };
 
 const textNumberStyles = {
-  color: "#878787",
-  fontWeight: "600",
-  fontSize: "14px",
+  color: '#878787',
+  fontWeight: '600',
+  fontSize: '14px',
 };
 
 export default NFZCounter;

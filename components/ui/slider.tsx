@@ -11,17 +11,20 @@ type SliderProps = {
 function Slider({ value, className }: SliderProps) {
   return (
     <SliderPrimitive.Root
-      className={cn("data-horizontal:w-full data-vertical:h-full", className)}
+      className={cn(
+        "data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full",
+        className,
+      )}
       data-slot="slider"
       value={value}
       min={0}
       max={100}
       thumbAlignment="edge"
     >
-      <SliderPrimitive.Control className="pointer-events-none relative flex w-full touch-none items-center select-none data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col">
+      <SliderPrimitive.Control className="pointer-events-none relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col">
         <SliderPrimitive.Track
           data-slot="slider-track"
-          className="relative grow overflow-hidden rounded-full bg-white/30 select-none data-horizontal:h-1.75 data-horizontal:w-full data-vertical:h-full data-vertical:w-1.75"
+          className="relative grow overflow-hidden rounded-full bg-white/30 select-none data-[orientation=horizontal]:h-1.75 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.75"
         >
           <div className="absolute inset-0 z-0 flex items-center justify-between">
             <div className="h-full w-[2px] bg-none" />
@@ -33,7 +36,7 @@ function Slider({ value, className }: SliderProps) {
           </div>
           <SliderPrimitive.Indicator
             data-slot="slider-range"
-            className="relative z-10 bg-[linear-gradient(90deg,#4E3ABD_0%,#9E90FF_100%)] select-none data-horizontal:h-full data-vertical:w-full"
+            className="relative z-10 bg-[linear-gradient(90deg,#4E3ABD_0%,#9E90FF_100%)] select-none data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
           />
         </SliderPrimitive.Track>
         <SliderPrimitive.Thumb

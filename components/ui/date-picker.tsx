@@ -34,13 +34,37 @@ function isValidDate(date: Date | undefined) {
 
 export function DatePickerInput({
   container,
+  value: controlledDate,
+  onValueChange,
 }: {
   container?: React.ComponentProps<typeof PopoverContent>['container'];
+  /** Date contrôlée (optionnel). Si fournie avec onValueChange, le composant devient contrôlé. */
+  value?: Date | undefined;
+  onValueChange?: (date: Date | undefined) => void;
 }) {
+  const isControlled = onValueChange !== undefined;
   const [open, setOpen] = React.useState(false);
-  const [date, setDate] = React.useState<Date | undefined>(new Date('2025-06-01'));
+  const [internalDate, setInternalDate] = React.useState<Date | undefined>(
+    new Date('2025-06-01'),
+  );
+  const date = isControlled ? controlledDate : internalDate;
+  const setDate = (next: Date | undefined) => {
+    if (isControlled) {
+      onValueChange(next);
+    } else {
+      setInternalDate(next);
+    }
+  };
   const [month, setMonth] = React.useState<Date | undefined>(date);
-  const [value, setValue] = React.useState(formatDate(date));
+  // Texte affiché : dérivé de la date en mode contrôlé, état libre sinon
+  // (pour autoriser une saisie texte invalide temporaire).
+  const [internalValue, setInternalValue] = React.useState(formatDate(date));
+  const value = isControlled ? formatDate(controlledDate) : internalValue;
+  const setValue = (next: string) => {
+    if (!isControlled) {
+      setInternalValue(next);
+    }
+  };
 
   return (
     <Field className="w-[343px]">

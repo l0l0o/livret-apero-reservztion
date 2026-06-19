@@ -51,9 +51,9 @@ export function BarCard({
 
         <div className="flex flex-col gap-1">
           <div className="flex items-start justify-between">
-            <h3 className="text-[18px] font-medium">{title}</h3>
+            <h3 className="text-[18px] font-medium text-white">{title}</h3>
             <button type="button" onClick={() => setLiked((v) => !v)} aria-label="Favori">
-              <Heart className={cn('size-5', liked && 'fill-current text-red-500')} />
+              <Heart className={cn('size-5 text-white', liked && 'fill-current text-red-500')} />
             </button>
           </div>
 

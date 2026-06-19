@@ -5,7 +5,11 @@ export type Bar = {
   hours: string;
   maxPeople: number;
   imageSrc: string;
-  discount?: string;
+  /**
+   * Réduction (en %) proposée par le bar pour chaque palier NFZ.
+   * Indexée par le coût du palier : 100, 200, 300, 400, 500.
+   */
+  discounts: Record<number, number>;
 };
 
 // Établissements réels issus de https://nightpass.fr/etablissements/
@@ -18,7 +22,7 @@ export const MOCK_BARS: Bar[] = [
     hours: '18h - 02h',
     maxPeople: 40,
     imageSrc: '/bars/voila.jpeg',
-    discount: '-20%',
+    discounts: { 100: 5, 200: 10, 300: 17, 400: 25, 500: 50 },
   },
   {
     id: '2',
@@ -27,7 +31,7 @@ export const MOCK_BARS: Bar[] = [
     hours: '17h - 01h',
     maxPeople: 60,
     imageSrc: '/bars/punta-cana.jpeg',
-    discount: '-15%',
+    discounts: { 100: 3, 200: 7, 300: 12, 400: 20, 500: 35 },
   },
   {
     id: '3',
@@ -36,7 +40,7 @@ export const MOCK_BARS: Bar[] = [
     hours: '16h - 00h',
     maxPeople: 80,
     imageSrc: '/bars/yachting.jpeg',
-    discount: '-30%',
+    discounts: { 100: 4, 200: 9, 300: 15, 400: 23, 500: 45 },
   },
   {
     id: '4',
@@ -45,7 +49,7 @@ export const MOCK_BARS: Bar[] = [
     hours: '18h - 02h',
     maxPeople: 35,
     imageSrc: '/bars/troll-pub.jpeg',
-    discount: '-10%',
+    discounts: { 100: 2, 200: 6, 300: 11, 400: 18, 500: 28 },
   },
   {
     id: '5',
@@ -54,7 +58,7 @@ export const MOCK_BARS: Bar[] = [
     hours: '19h - 03h',
     maxPeople: 50,
     imageSrc: '/bars/verre-luisant.jpeg',
-    discount: '-25%',
+    discounts: { 100: 5, 200: 10, 300: 16, 400: 24, 500: 42 },
   },
   {
     id: '6',
@@ -63,7 +67,7 @@ export const MOCK_BARS: Bar[] = [
     hours: '17h - 01h',
     maxPeople: 45,
     imageSrc: '/bars/chez-popeye.jpeg',
-    discount: '-20%',
+    discounts: { 100: 3, 200: 8, 300: 14, 400: 21, 500: 33 },
   },
   {
     id: '7',
@@ -72,7 +76,7 @@ export const MOCK_BARS: Bar[] = [
     hours: '18h - 00h',
     maxPeople: 30,
     imageSrc: '/bars/le-cham.jpeg',
-    discount: '-15%',
+    discounts: { 100: 1, 200: 5, 300: 10, 400: 19, 500: 26 },
   },
   {
     id: '8',
@@ -81,6 +85,6 @@ export const MOCK_BARS: Bar[] = [
     hours: '19h - 02h',
     maxPeople: 25,
     imageSrc: '/bars/abreuvoir.webp',
-    discount: '-40%',
+    discounts: { 100: 4, 200: 9, 300: 17, 400: 25, 500: 48 },
   },
 ];

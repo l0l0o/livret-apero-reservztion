@@ -2,6 +2,7 @@ import Navbar from '@/features/navbar/Navbar';
 import OffersList from '@/features/offers-list/OffersList';
 
 import NFZCounter from "@/features/NFZCounter/NFZCounter";
+import InviteButton from "@/features/InviteButton/InviteButton";
 
 export default function Home() {
   return (
@@ -16,8 +17,24 @@ export default function Home() {
       <div style={wrapperStyles}>
         <h1 style={titleStyles}>Mon livret A(pero)</h1>
         <NFZCounter NFZvalue={280} maxValue={500} />
+        <div className="flex flex-col items-center justify-center gap-2">
+          <InviteButton />
+          <div className="flex items-center gap-3">
+            <p className="text-white text-sm">0/5 membres</p>
+            <span className="text-white text-sm">|</span>
+            <div className="flex items-center gap-1 ml-1">
+              <span className="font-bold text-white">+20</span>
+              <Image
+                src="/image/NightFlouz.png"
+                alt="Coin"
+                width={18}
+                height={18}
+              />
+            </div>
+          </div>
+        </div>
+
         {/* 
-      <InviteButton />
 
       <div>
         <h2 className="text-2xl font-bold underline">Découvrez vos offres</h2>
